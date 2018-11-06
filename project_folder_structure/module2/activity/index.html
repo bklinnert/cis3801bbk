@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Cylinder assembly</title>
+<meta charset="utf-8">
+</head>
+<body>
+<header>
+ <img src="sac.gif" id="floatright" alt="Cylinder">
+  <h1>Cylinder Assembly data</h1>
+</header>
+<nav>
+  <b><a href="index.html">Home</a> &nbsp; 
+     <a href="services.html">Services</a> &nbsp; 
+	 <a href="contact.html">Contact</a> &nbsp; 
+	 <a href="button w/no function.html">File Not Found</a>
+  </b>
+</nav>
+<main>
+ <h2>Production data</h2>
+ <p>This is where the line data will be placed</p>
+ <h2>Previous data</h2>
+ <p>previous production data</p>
+
+
+<?php
+//Allow Headers
+header('Access-Control-Allow-Orgin: *');
+
+//$servername = "cis3801cbbkvmsvr.centralus.cloudapp.azure.com:3306";
+$servername = "localhost:3306";
+$username = "bbk3801";
+$password = "Xajb4life";
+$dbname = "demo";
+
+// Create connection
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+
+if ($conn->connect_error)
+	echo "Error: Unexpected connection error. Please retry the operation.";
+else
+{
+$result = $conn->query("SELECT * FROM test");
+
+	if (($result !=0) && ($result ->num_rows > 0))
+		{
+			$row = $result->fetch_assoc();
+
+			
+			$A = $row['Product'];
+			$B = $row['Quantity'];
+			$C = $row['Build'];
+			$D = $row['Cost'];
+			
+			echo "<h2>Products Produced:</h2>";
+			echo "<table boarder=2>";
+  			echo "<tr><th style='width:75px'>Product</th>";
+     			    echo "<th style='width:75px'>Quantity</th>";
+     			    echo "<th style='width:75px'>Build</th>";
+			echo "<th style='width:75px'>Cost</th></tr>";
+
+			
+         echo "<tr><td>".$A['Product']."</td>";
+         echo "<td>".$B['Quantity']."</td>";
+         echo "<td>".$C['Build']."</td>";
+        echo "<td>".$D['Cost']."</td></tr>";
+			echo $A;
+			echo $B;
+			echo $C;
+			echo $D;
+
+
+
+}
+
+	$conn->close();
+}
+
+?>
+
+<table>
+          <tr>
+            <th>Part Number</th>
+            <th>Quanity</th>
+            <th>Elapsed Time</th>
+          </tr>
+          <tr>
+            <td>1234567</td>
+            <td>125</td>
+            <td>1:00:22</td>
+          </tr>
+          <tr>
+            <td>7142234</td>
+            <td>44</td>
+            <td>1:33:25</td>
+          </tr>
+          <tr>
+            <td>7118991</td>
+            <td>87</td>
+            <td>1:23:25</td>
+          </tr>
+          <tr>
+            <td>6767891</td>
+            <td>77</td>
+            <td>0:33:25</td>
+          </tr>
+          <tr>
+            <td>5555555</td>
+            <td>2345</td>
+            <td>4:13:55</td>
+          </tr>
+          <tr>
+            <td>7654321</td>
+            <td>12</td>
+            <td>3:33:33</td>
+          </tr>
+        </table>
+</main>
+<footer>
+  <small><i>Copyright &copy; 2018 Cylinder assembly </i></small>
+</footer>
+</body>
+</html>
+
+
+
+
+
